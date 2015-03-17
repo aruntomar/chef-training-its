@@ -22,8 +22,10 @@ user 'chef_trainer' do
   action :create
 end
 
+url = 'https://github.com/msysgit/msysgit/releases/download/Git-1.9.5-preview20141217/Git-1.9.5-preview20141217.exe'
+
 remote_file "C:\git.exe" do
-  source 'https://github.com/msysgit/msysgit/releases/download/Git-1.9.5-preview20141217/Git-1.9.5-preview20141217.exe'
+  source "#{url}"
   action :create_if_missing
 end
 
