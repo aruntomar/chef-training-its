@@ -4,7 +4,8 @@ run_list(
   "recipe[yum-epel]",
   "recipe[fail2ban]",
   "recipe[chef-client]",
-  "recipe[git]"
+  "recipe[git]",
+  "recipe[adminuser]"
 )
 default_attributes()
 override_attributes()
