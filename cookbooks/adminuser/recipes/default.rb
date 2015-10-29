@@ -4,6 +4,8 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
+include_recipe "build-essential"
+
 directory "/root/.ssh" do
   owner "root"
   group "root"
@@ -25,6 +27,9 @@ template "/etc/motd" do
   group "root"
   mode 0644
   variables({
-    :content => "Welcome to Chef"
+    :content => "Welcome to Colt"
             })
 end
+
+
+package 'vim'

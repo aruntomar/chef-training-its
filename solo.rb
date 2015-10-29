@@ -1,1 +1,1 @@
-cookbook_path = "/vagrant/cookbooks"
+cookbook_path = ["/vagrant/cookbooks"]
