@@ -1,0 +1,18 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-7.0
+    driver:
+      customize:
+        memory: 1256
+
+suites:
+  - name: default
+    run_list:
+      - recipe[motd::default]
+    attributes:
