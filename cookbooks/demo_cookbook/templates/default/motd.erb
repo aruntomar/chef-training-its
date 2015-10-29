@@ -1,0 +1,12 @@
+This is the output from template with hard coded values.
+Hello, <%= @name %>
+
+Welcome to <%= @training_name %>
+
+System configuration
+FQDN : <%= node.fqdn %>
+IP   : <%= node.ipaddress %>
+CPU  : <%= node.cpu['0']['model_name'] %>
+OS   : <%= node.os %>
+Platform : <%= node.platform %>
+Version : <%= node.platform_version %>
