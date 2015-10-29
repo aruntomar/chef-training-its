@@ -1,0 +1,165 @@
+FORMAT: 1A
+HOST: https://coralnetwork.apiblueprint.org/v1
+
+# coralnetwork
+
+Coral Network is a simple api for developers, who could call this API to deploy their desired applications in a consistent manner in no time. 
+
+## Group Customer
+
+Resources related to customers in the API
+
+## Customer [/customers/{customer_id}]
+
+A customer object has the following attributes:
+
++ name
++ email_id
++ customer_id
+
++ Parameters
+    + customer_id: 2e8ecf537efc8c099b8b7c6f446d86c0f5651cd7 (required,id) - ID of the customer
+    
+### View a customer detail [GET]
+
++ Response 200 (application/json)
+
+        {
+            "name":"XYZ",
+            "customer_id":2e8ecf537efc8c099b8b7c6f446d86c0f5651cd7,
+            "email_id":"xyz@xyz.com"
+        }
+
+## Customer Collection [/customers]
+
+### List All Customers [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name":"XYZ",
+                "customer_id":2e8ecf537efc8c099b8b7c6f446d86c0f5651cd7,
+                "email_id":"xyz@xyz.com"
+            },
+            {
+                "name":"ABC",
+                "customer_id":c0ed6b18a8767d3400efae0bfad775ecc746123a,
+                "email_id":"abc@abc.com"
+            }
+        ]
+
+### Create a New Customer [POST]
+
+Create a new customer using this action. It takes a JSON
+object containing email id.
+
++ Request (application/json)
+
+        {
+            "name":"EFG"
+            "email_id": "efg@efg.com"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /customers/3
+
+    + Body
+
+            {
+                "name":"EFG",
+                "customer_id":3b43b09706497495f2a19155c2554cb27b7638fe,
+                "email_id":"efg@efg.com"
+            }
+
+### Delete All customers [DELETE]
+
++ Response 301 (application/json)
+        
+        {
+            "Error": "Nobody should be able to delete all customers"
+        }
+
+## Group Nodes
+
+Resources related to Nodes in the API
+
+## Nodes [/nodes/{node_name}]
+
+A Node object has the following attributes:
+
++ node_name
++ ip_address
++ customer_id
++ port
++ username
+
++ Parameters
+    + node_name: b4ddd63aef6ba039997bef89a2df0d1547e12eef (required,id) - ID of the customer
+    
+### View a node detail [GET]
+
++ Response 200 (application/json)
+
+        {
+            "node_name":"b4ddd63aef6ba039997bef89a2df0d1547e12eef",
+            "customer_id":2e8ecf537efc8c099b8b7c6f446d86c0f5651cd7,
+            "ip_address": 11.22.33.44,
+            "port": 22,
+            "username":"root"
+        }
+
+## Nodes Collection [/nodes]
+
+### List All Nodes [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "node_name":"b4ddd63aef6ba039997bef89a2df0d1547e12eef"
+            },
+            {
+                "node_name":"e5c7d077c117ad37517c440892a05809338ec5c1"
+            }
+        ]
+
+### Create a New Node [POST]
+
+Create a new node using this action. It takes a JSON
+object containing ip, username, port
+
++ Request (application/json)
+
+        {
+            "ip_address": 22.33.44.55,
+            "user_name" : "root",
+            "port" : 22
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /nodes/e5c7d077c117ad37517c440892a05809338ec5c1
+
+    + Body
+    
+            {
+                "node_name":"e5c7d077c117ad37517c440892a05809338ec5c1",
+                "customer_id": "2e8ecf537efc8c099b8b7c6f446d86c0f5651cd7",
+                "ip_address": 22.33.44.55,
+                "user_name" : "root",
+                "port" : 22
+            }
+        
+### Delete All nodes [DELETE]
+
++ Response 301 (application/json)
+        
+        {
+            "Error": "Nobody should be able to delete all nodes"
+        }
