@@ -1,3 +1,29 @@
+cron Cookbook CHANGELOG
+=======================
+This file is used to list changes made in each version of the cron cookbook.
+
+v1.7.0 (2015-10-05)
+-------------------
+- Added Arch Linux support
+- Added FreeBSD support, which emulates /etc/cron.d folder support and builds a single /etc/crontab file using the contents of /etc/cron.d
+- Ensure that the cron package is installed on Debian based systems
+- Updated Kitchen CI to use new format and additional platforms
+- Added standard Rubocop config for Chef managed cookbooks and resolved all warnings
+- Added Travis CI testing for foodcritic, rubocop, and chefspec
+- Added Serverspec tests for Kitchen CI
+- Updated Berkfile to the latest format
+- Updated contributing and testing documentation
+- Updated Gemfile dependencies to the latest releases of testing gems
+- Removed pre-1.9 Ruby hash rocket syntax
+- Added maintainers.md and maintainers.toml files
+- Added cookbook version and Travis CI badges to the readme
+- Clarified that the minimum supported Chef release is 11.0
+- Added a Rakefile for easier testing
+- Added chefignore file to limit what files are uploaded to the Chef server
+- Added long_description to the metadata.rb file
+- Added source_url and issues_url to the metadata.rb file for Supermarket
+- Updated Chefspec for 4.X format
+
 v1.6.1 (2014-10-15)
 -------------------
 - [#48] fix typo apry -> apr
@@ -20,8 +46,8 @@ v1.4.3 (2014-09-09)
 
 v1.4.2 (2014-09-08)
 -------------------
-#31 - Fix up validate_month for Fixnums
-#32 - Fix upvalidate_dow for Fixnums
+- [#31] Fix up validate_month for Fixnums
+- [#32] Fix upvalidate_dow for Fixnums
 
 v1.4.0 (2014-05-07)
 -------------------
@@ -64,21 +90,21 @@ v1.3.2 (2014-03-27)
 v1.3.0 (2014-02-25)
 -------------------
 ### New Feature
-- **[COOK-4112](https://tickets.opscode.com/browse/COOK-4112)** - Solaris 11 support for cron
+- **[COOK-4112](https://tickets.chef.io/browse/COOK-4112)** - Solaris 11 support for cron
 
 ### Bug
-- **[COOK-3813](https://tickets.opscode.com/browse/COOK-3813)** - Add metadata for recipes in the cron cookbook
+- **[COOK-3813](https://tickets.chef.io/browse/COOK-3813)** - Add metadata for recipes in the cron cookbook
 
 
 v1.2.8
 ------
 ### Bug
-- **[COOK-3452](https://tickets.opscode.com/browse/COOK-3452)** - Add support for raspbian platform
+- **[COOK-3452](https://tickets.chef.io/browse/COOK-3452)** - Add support for raspbian platform
 
 v1.2.6
 ------
 ### Improvement
-- **[COOK-3005](https://tickets.opscode.com/browse/COOK-3005)** - Remove blankline in template
+- **[COOK-3005](https://tickets.chef.io/browse/COOK-3005)** - Remove blankline in template
 
 v1.2.4
 ------

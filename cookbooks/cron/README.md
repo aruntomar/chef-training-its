@@ -1,15 +1,28 @@
 cron Cookbook
 =============
+
+[![Build Status](https://travis-ci.org/chef-cookbooks/cron.svg?branch=master)](https://travis-ci.org/chef-cookbooks/cron)
+[![Cookbook Version](https://img.shields.io/cookbook/v/cron.svg)](https://supermarket.chef.io/cookbooks/cron)
+
 Installs the cron package and starts the crond service.
 
 
 Requirements
 ------------
-Platforms:
+
+#### Platforms
 - RHEL family
 - Debian family
 - Solaris family
+- Arch Linux family
 - Gentoo
+- FreeBSD
+
+#### Chef
+- Chef 11+
+
+#### Cookbooks
+- none
 
 
 Resources and Providers
@@ -26,11 +39,15 @@ cron_d 'daily-usage-report' do
 end
 ```
 
+Note: FreeBSD does not support cron.d functionality, so it is emulated.  cron fragments are created in /etc/cron.d, then they are concatenated together into /etc/crontab.
+FreeBSD puts some core OS functionality into /etc/crontab, so the original file is copied to /etc/crontab.os_source, and included in the concatenation.
+
 Note: This LWRP does not function on Solaris platforms because they do not support running jobs stored in /etc/cron.d.
+Any Solaris users are welcome to test the emulate_cron.d functionation that was implemented for FreeBSD.  See defaults/attributes.rb for more information.
 
 #### Attributes
 * `minute`, `hour`, `day`, `month`, `weekday` - schedule your cron job. These correspond exactly to their equivalents in the crontab file. All default to "*".
-* `predefined_value` - schedule your cron job with one of the special predefined value instead of * * * * * pattern. This correspond to @reboot, @yearly, @annually, @monthly, @weekly, @daily, @midnight or @hourly.
+* `predefined_value` - schedule your cron job with one of the special predefined value instead of * * * * * pattern. This correspond to `"@reboot"`, `"@yearly"`, `"@annually"`, `"@monthly"`, `"@weekly"`, `"@daily"`, `"@midnight"` or `"@hourly"`.
 * `command` - the command to run. Required.
 * `user` - the user to run as. Defaults to "root".
 * `mailto`, `path`, `home`, `shell` - set the corresponding environment variables in the cron.d file. No default.
@@ -67,10 +84,10 @@ end
 
 License & Authors
 -----------------
-- Author:: Joshua Timberman (joshua@opscode.com)
+- Author:: Cookbook Engineering Team (<cookbooks@chef.io>)
 
 ```text
-Copyright 2010-2012, Opscode, Inc.
+Copyright 2010-2015, Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
