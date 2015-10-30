@@ -21,7 +21,7 @@ class ::Chef::Recipe
   include ::Opscode::ChefClient::Helpers
 end
 
-unless chef_server?
+unless Chef::Config[:validation_key].nil?
   file Chef::Config[:validation_key] do
     action :delete
     backup false
